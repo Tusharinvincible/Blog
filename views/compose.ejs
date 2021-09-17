@@ -1,0 +1,25 @@
+<%- include("partials/header") -%>
+    <div>
+        <div <% if(titleOfPage==="Compose"){ %> style="text-align:center"
+          <%}%>  >
+            <h2 style="text-align: center;"><%= titleOfPage %></h2>
+        </div>
+        
+        <div style="text-align: center;">
+            <br>
+            <br>
+            <br>
+           <form action="/compose" method="post">
+            <label for="title">Title</label>
+            <br>
+                <input id="title" placeholder="Enter the title...." name="publishText" type="text" autocomplete="off">
+                <br>
+                <label for="post">Post</label>
+                <br>
+                <textarea name="postData" id="post" cols="30" rows="5" placeholder="Post....."></textarea>
+                <br>
+                <input type="submit" value="Publish">  
+            </form>      
+</div>
+    </div>
+<%- include("partials/footer") -%>
