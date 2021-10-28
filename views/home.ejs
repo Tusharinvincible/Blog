@@ -2,24 +2,54 @@
     <div>
         <h1 style="text-align: center;"><%= titleOfPage %></h1>
       
-          
+        <div class="Blog-content" >
             <% posts.forEach((post)=>{ %>
-                <div style="margin-top: 5px;" <%if(check){ %> class="post-box"
-                    <% } %> >
-                     <h4 class="title-box"  style="text-align: center; justify-content: center;"> <%= post.titleOfPost %></h4>
+                
+                    <div class="Blog-Data">
+                     <h4 class="title-box"  style="text-align: center; justify-content: center;"> <%= post.name %></h4>
+                     <hr>
 
-                    <hr>
+                    
                
-                     <p class="post-data" style="margin: 10px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">  
-                    <%= post.paragraphText.substring(0,100) +"....." %>
+                     <p class="post-data" style=" font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
 
-                    <a href="/posts/<%= post.titleOfPost %>">Read More</a>
-                     </p>
-                </div>
+                         <%= post.blogData.substring(0,100) +"....." %>
+
+                    <br>
+
+                    <a href="/posts/<%=post.name%>">Continue reading</a>
+
+                    </p>
+
+                       <% if(post.name!="Abc"){  %>
+
+                            <form action="/delete" method="post">
+
+                                <input type="hidden" name="delteBlog" value="<%= post._id %>">
+
+                                <button id="trash" type="submit">
+                                    <i class="fa fa-trash"></i>
+                                
+                                </button>
+                            </form>
+                            <div class="thumbs-up">
+                            <form action="/like" method="post">
+                               
+                                <input type="hidden" name="likeBlog" value="<%= post._id %>">
+                                <button type="submit" ><i class="fa fa-thumbs-up"></i></button>
+
+                            </form>
+                            <p><%=  post.likes %> </p>
+                        </div>
+                       <% } %>
+
+                    </div>
+                  
+            
 
             <% }) %>
 
-               
+        </div>
             
         
     </div>
